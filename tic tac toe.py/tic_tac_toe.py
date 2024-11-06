@@ -1,5 +1,5 @@
 valeurs = [ " " for x in range(9)]
-
+print("*************")
 def tic_tac_toe():
     print(valeurs[0] +  "   |   |"+valeurs[1]  + valeurs[2])
     print("-"*13)
@@ -9,10 +9,10 @@ def tic_tac_toe():
     print(valeurs[6] +  "   |   |"+valeurs[7]  + valeurs[8])
     
 tic_tac_toe()
+print("*************")
 
 
 
-    
 
 
 
