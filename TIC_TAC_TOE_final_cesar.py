@@ -4,23 +4,26 @@ joueur_actuel= ""
 grille = ["¤","¤","¤","¤","¤","¤","¤","¤","¤"]
 fin_jeu = False 
 gagnant = ""
+joueur = joueur_actuel
 
 #fonctions du jeu a appeler en debut de programme:
 def jouer():
-    choix_joeur()           #1
+    choix_joueur()          #1
     affichage_grille()      #2
     
     # et conditions principales du jeu (en boucle) pendant le jeu (programme):
-    while fin_jeu== False :
+    while fin_jeu == False :
         tour(joueur_actuel) #3
         verifier_fin_jeu()  #4
         joueur_suivant()    #5
+        if fin_jeu == False:
+            return tour(joueur_actuel)
     
     resultat()              #6
     
-# fonction definir les joueurs:
-def choix_joeur():
-    global joeur_actuel #appel le joueur actuel dans les differentes fonctions du jeu
+# 1) fonction definir les joueurs:
+def choix_joueur():
+    global joueur_actuel #appel le joueur actuel dans les differentes fonctions du jeu
     joueur_actuel = input("Veuillez taper X ou O svp: ")
     while True: 
         joueur_actuel= joueur_actuel.upper() # met x ou o en Majuscule
@@ -33,31 +36,31 @@ def choix_joeur():
         else:
             joueur_actuel = input("Veuillez taper X ou O svp: ")
  
-# fonction definir l'affichage
+# 2) fonction definir l'affichage
 def affichage_grille():
    
     print("*************")                                                              
-    print("{", grille[0],"|", grille[1],"|", grille[2],"}     <---- 1|2|3")
+    print("{", grille[0], "|", grille[1],"|", grille[2],"}     <---- 1|2|3")
     print("----+---+----")
-    print("{", grille[3],"|", grille[4],"|", grille[5],"}     <---- 4|5|6")
+    print("{", grille[3], "|", grille[4],"|", grille[5],"}     <---- 4|5|6")
     print("----+---+----")
-    print("{", grille[6],"|", grille[7],"|", grille[8],"}     <---- 7|8|9")
+    print("{", grille[6], "|", grille[7],"|", grille[8],"}     <---- 7|8|9")
     print("*************")
    
-#definition des tours de jeu:
-def tour(joueur):
-    print("c'est le tour du second joueur: ", joueur )
+#3) definition des tours de jeu:
+def tour(joueur): 
+    print("Joueur ----", joueur,"---- à vous de jouer." )
     pos = input("veuillez sélectionner un chiffre entre 1 et 9: ")
     
-    valide = False
-    while valide == False:
+    pos_valide = False
+    while pos_valide == False:
         while pos not in ["1","2","3","4","5","6","7","8","9"]:
             pos = input("veuillez selectionner un espace vide: ")
         pos = int(pos) -1  # transformation chaine de caractere en entier pour verif 
         
         #finir la verification:
         if grille[pos] == "¤": # si "position disponible"
-            valide = True 
+            pos_valide = True 
         else:
             print("Position non disponible ! Gamberge !")
     
