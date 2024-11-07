@@ -4,6 +4,9 @@ grille= ['1','2','3',
 joueur_actif= ""
 jeu_fini = False
 gagnant = ""
+
+# la fonction permet de choisir quel joueur on veut être entre "X" et "O"
+# joueur_actif = le joueur actuelle aprés input
 def rotation_joueur():
     global joueur_actif
     joueur_actif= input("Quel joueur voulez vous être X ou O ? : ")
@@ -12,12 +15,14 @@ def rotation_joueur():
         if joueur_actif == "X":
             print("vous êtes le Joueur X le Joueur 2 sera O")
             break
-        elif joueur_actif == "O":
+        elif joueu0r_actif == "O":
             print("Vous êtes le Joueur O le Joueur 2 sera X")
             break
         else:
             joueur_actif= input("Quel joueur voulez vous être X ou O ? : ")
-            
+
+
+# On construit la structure du morpion et on implémente une variable grille qui a pour valeur une liste          
 def the_grid():
     print("\n")
     print("|-------|-------|-------|")
@@ -29,7 +34,8 @@ def the_grid():
     print("|-------|-------|-------|")
     print("\n")
 
-
+# la fonction qui permet de vérifier si on a un gagnant ou une égalité ou bien si on conclut qu'il n'y a pas de gagnant ni d'égalité
+# les conditions de victoire son déterminer par les 8 façons de gagner dans le morpion les 3 colonnes les 3 lignes et les 2 diagonales
 def victoire():
     global jeu_fini
     global gagnant
