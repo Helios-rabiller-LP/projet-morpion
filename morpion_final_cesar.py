@@ -1,5 +1,5 @@
 
-# variables global:
+# variables globales du jeu:
 joueur_actuel= ""
 grille = ["¤","¤","¤","¤","¤","¤","¤","¤","¤"]
 fin_jeu = False 
@@ -10,7 +10,7 @@ def jouer():
     choix_joeur()           #1
     affichage_grille()      #2
     
-    #condition 1ere du jeu en boucles pendant le jeu (programme du jeu):
+    # et conditions principales du jeu (en boucle) pendant le jeu (programme):
     while fin_jeu== False :
         tour(joueur_actuel) #3
         verifier_fin_jeu()  #4
