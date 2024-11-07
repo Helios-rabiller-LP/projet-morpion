@@ -1,13 +1,13 @@
-#definir la grid visuelle et valeur des cases
-grid= ['1', '2', '3', '4', '5', '6', '7', '8','9']
-def the_grid(grid):
-    print(f"{grid[0]}   | {grid[1]}   | {grid[2]}")
+""""#definir la grille visuelle et valeur des cases
+grille= ['1', '2', '3', '4', '5', '6', '7', '8','9']
+def the_grid(grille):
+    print(f"{grille[0]}   | {grille[1]}   | {grille[2]}")
     print("----+-----+----")
-    print(f"{grid[3]}   | {grid[4]}   | {grid[5]}")
+    print(f"{grille[3]}   | {grille[4]}   | {grille[5]}")
     print("----+-----+----")
-    print(f"{grid[6]}   | {grid[7]}   | {grid[8]}")
+    print(f"{grille[6]}   | {grille[7]}   | {grille[8]}")
 #appeller la grille
-the_grid(grid) 
+the_grid(grille) 
 
 #verifier la victoire
 def verifier_victoire():
@@ -24,4 +24,21 @@ def verifier_victoire():
         return True
     if grille[2] == grille[4] == grille[6]:
         return True
-    return False
+    return False """ 
+    
+    # Fonction pour afficher la grille
+grille= ['1', '2', '3', '4', '5', '6', '7', '8','9']
+def afficher_grille(grille):
+    print(f"{grille[0]}   | {grille[1]}   | {grille[2]}")
+    print("----+-----+----")
+    print(f"{grille[3]}   | {grille[4]}   | {grille[5]}")
+    print("----+-----+----")
+    print(f"{grille[6]}   | {grille[7]}   | {grille[8]}")
+#appeller la grille
+afficher_grille(grille)
+    
+        
+
+
+
+
