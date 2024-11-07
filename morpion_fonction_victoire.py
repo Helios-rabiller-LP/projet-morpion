@@ -15,12 +15,11 @@ def rotation_joueur():
         if joueur_actif == "X":
             print("vous êtes le Joueur X le Joueur 2 sera O")
             break
-        elif joueu0r_actif == "O":
+        elif joueur_actif == "O":
             print("Vous êtes le Joueur O le Joueur 2 sera X")
             break
         else:
             joueur_actif= input("Quel joueur voulez vous être X ou O ? : ")
-
 
 # On construit la structure du morpion et on implémente une variable grille qui a pour valeur une liste          
 def the_grid():
@@ -63,11 +62,43 @@ def victoire():
     elif grille[2] == grille[4] == grille[6]:
         jeu_fini = True
         gagnant = grille[6]
-    elif "1" and "2" and "3" and "4" and "5" and "6" and "7" and "8" and "9" not in grille:
+    elif all(cell in ['X', 'O'] for cell in grille):
         jeu_fini = True
     else:
         jeu_fini= False
+
+def tour(joueur):
+    print("tour du Joueur "+ joueur)
+    coup = input("Sélectionner un nombre de 1 a 9 dans la grille pour placer votre pion :")
+    check = False
+    while check == False :
+    
+      while coup not in['1','2','3','4','5','6','7','8','9']:
+        coup = input("Sélectionner un nombre de 1 a 9 dans la grille pour placer votre pion :")
+      coup = int(coup) - 1
+
+      if grille[coup] == "1" or grille[coup] == "2" or grille[coup] == "3" or grille[coup] == "4" or grille[coup] == "5" or grille[coup] == "6" or grille[coup] == "7" or grille[coup] == "8" or grille[coup] =="9" :
+          check = True
+      else :
+          print("vous ne pouvez pas vous placez ici !")
+    grille[coup] = (joueur)
+    the_grid()
+    
+
+
+
 def jouer():
     rotation_joueur()
     the_grid()
+    while jeu_fini == False :
+        tour(joueur_actif)
+        victoire()
+        if joueur_actif == "X":
+            joueur_actif = "O"
+        else:
+            joueur_actif = "X"
+    if gagnant == "X" or gagnant == "O":
+        print("Le vainqueur est le Joueur ", gagnant)
+    else :
+        print("Match Nul!")
 jouer()
