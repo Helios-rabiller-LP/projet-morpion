@@ -113,18 +113,26 @@ def play():
 
 
 
-"""def replay():
-    choix = input("voulez vous replay ?")
+def replay():
+    global active_player
+    global end_game
+    global winner
+    global Grid
+    choix = input("Voulez vous jouez au morpion ? oui/non : ")
     choix = choix.upper()
     while True:
         if choix == "OUI":
+            
+            winner = ""
             play()
-            return False
+            choix = input("voulez vous rejouer ?")
+            choix = choix.upper()
         elif choix == "NON":
-            print("Merci d'avoir joué !")
-            return False
+            print("passez une bonne journée!")
+            break
         else:
-            choix = input("voulez vous replay ?")
-            return True
-"""
-play()
+            choix = input("je ne comprends que oui/non : ")
+            choix = choix.upper()
+
+replay()
+
