@@ -1,4 +1,5 @@
 
+ 
 grille = ["  ", "  ", "  ",
          "  ", "  ", "  ",
          "  ", "  ", "  "]
@@ -105,8 +106,3 @@ def victoire():
         print("retante ta chance")
 victoire()
 """
-
-    
-
-
-
