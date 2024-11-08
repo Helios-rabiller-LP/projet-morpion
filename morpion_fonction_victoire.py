@@ -1,124 +1,131 @@
-grille= ['1','2','3',
+Grid= ['1','2','3',
          '4','5','6',
          '7','8','9']
-joueur_actif= ""
-jeu_fini = False
-gagnant = ""
+active_player= ""
+end_game = False
+winner = ""
 
 # la fonction permet de choisir quel joueur on veut être entre "X" et "O"
-# joueur_actif = le joueur actuelle aprés input
-def rotation_joueur():
-    global joueur_actif
-    joueur_actif= input("Quel joueur voulez vous être X ou O ? : ")
+# active_player = le joueur actuelle aprés input
+def player_choice():
+    global active_player
+    active_player= input("Quel joueur voulez vous être X ou O ? : ")
     while True:
-        joueur_actif =joueur_actif.upper() # on passe tous str en majuscule
-        if joueur_actif == "X":
+        active_player =active_player.upper() # on passe tous str en majuscule
+        if active_player == "X":
             print("vous êtes le Joueur X le Joueur 2 sera O")
             break
-        elif joueur_actif == "O":
+        elif active_player == "O":
             print("Vous êtes le Joueur O le Joueur 2 sera X")
             break
         else:
-            joueur_actif= input("Quel joueur voulez vous être X ou O ? : ")
+            active_player= input("Quel joueur voulez vous être X ou O ? : ")
  
 
-# On construit la structure du morpion et on implémente une variable grille qui a pour valeur une liste          
+# On construit la structure du morpion et on implémente une variable Grid qui a pour valeur une liste          
 def the_grid():
     print("\n")
     print("|-------|-------|-------|")
-    print(f"|   {grille[0]}   |   {grille[1]}   |   {grille[2]}   |")
+    print(f"|   {Grid[0]}   |   {Grid[1]}   |   {Grid[2]}   |")
     print("|-------|-------|-------|")
-    print(f"|   {grille[3]}   |   {grille[4]}   |   {grille[5]}   |")
+    print(f"|   {Grid[3]}   |   {Grid[4]}   |   {Grid[5]}   |")
     print("|-------|-------|-------|")
-    print(f"|   {grille[6]}   |   {grille[7]}   |   {grille[8]}   |")
+    print(f"|   {Grid[6]}   |   {Grid[7]}   |   {Grid[8]}   |")
     print("|-------|-------|-------|")
     print("\n")
 
-# la fonction qui permet de vérifier si on a un gagnant ou une égalité ou bien si on conclut qu'il n'y a pas de gagnant ni d'égalité
+# la fonction qui permet de vérifier si on a un winner ou une égalité ou bien si on conclut qu'il n'y a pas de winner ni d'égalité
 # les conditions de victoire son déterminer par les 8 façons de gagner dans le morpion les 3 colonnes les 3 lignes et les 2 diagonales
-def victoire():
-    global jeu_fini
-    global gagnant
-    if grille[0] == grille[1] == grille[2]:
-        jeu_fini = True
-        gagnant = grille[2]
-    elif grille[3] == grille[4] == grille[5]:
-        jeu_fini = True
-        gagnant = grille[5]
-    elif grille[6] == grille[7] == grille[8]:
-        jeu_fini = True
-        gagnant = grille[8]
-    elif grille[0] == grille[3] == grille[6]:
-        jeu_fini = True
-        gagnant = grille[6]
-    elif grille[1] == grille[4] == grille[7]:
-        jeu_fini = True
-        gagnant = grille[7]
-    elif grille[2] == grille[5] == grille[8]:
-        jeu_fini = True
-        gagnant = grille[8]
-    elif grille[0] == grille[4] == grille[8]:
-        jeu_fini = True
-        gagnant = grille[8]
-    elif grille[2] == grille[4] == grille[6]:
-        jeu_fini = True
-        gagnant = grille[6]
-    elif all(cell in ['X', 'O'] for cell in grille):
-        jeu_fini = True
+def victory():
+    global end_game
+    global winner
+    if Grid[0] == Grid[1] == Grid[2]:
+        end_game = True
+        winner = Grid[2]
+    elif Grid[3] == Grid[4] == Grid[5]:
+        end_game = True
+        winner = Grid[5]
+    elif Grid[6] == Grid[7] == Grid[8]:
+        end_game = True
+        winner = Grid[8]
+    elif Grid[0] == Grid[3] == Grid[6]:
+        end_game = True
+        winner = Grid[6]
+    elif Grid[1] == Grid[4] == Grid[7]:
+        end_game = True
+        winner = Grid[7]
+    elif Grid[2] == Grid[5] == Grid[8]:
+        end_game = True
+        winner = Grid[8]
+    elif Grid[0] == Grid[4] == Grid[8]:
+        end_game = True
+        winner = Grid[8]
+    elif Grid[2] == Grid[4] == Grid[6]:
+        end_game = True
+        winner = Grid[6]
+    elif all(case in ['X', 'O'] for case in Grid):
+        end_game = True
     else:
-        jeu_fini= False
+        end_game= False
 
 # Ici on défini
 def tour(joueur):
-    global joueur_actif
+    global active_player
     print("tour du Joueur "+ joueur)
-    coup = input("Sélectionner un nombre de 1 a 9 dans la grille pour placer votre pion :")
+    coup = input("Sélectionner un nombre de 1 a 9 dans la Grid pour placer votre pion :")
     check = False
     while check == False :
     
       while coup not in['1','2','3','4','5','6','7','8','9']:
-        coup = input("Sélectionner un nombre de 1 a 9 dans la grille pour placer votre pion :")
+        coup = input("Sélectionner un nombre de 1 a 9 dans la Grid pour placer votre pion :")
       coup = int(coup) - 1
 
-      if grille[coup] == "1" or grille[coup] == "2" or grille[coup] == "3" or grille[coup] == "4" or grille[coup] == "5" or grille[coup] == "6" or grille[coup] == "7" or grille[coup] == "8" or grille[coup] =="9" :
+      if Grid[coup] == "1" or Grid[coup] == "2" or Grid[coup] == "3" or Grid[coup] == "4" or Grid[coup] == "5" or Grid[coup] == "6" or Grid[coup] == "7" or Grid[coup] == "8" or Grid[coup] =="9" :
           check = True
       else :
           print("vous ne pouvez pas vous placez ici !")
-    grille[coup] = (joueur)
+    Grid[coup] = (joueur)
     the_grid()
     
 
 def resultat():
-    if gagnant == "X" or gagnant == "O":
-        print("Le vainqueur est le Joueur ", gagnant)
+    if winner == "X" or winner == "O":
+        print("Le vainqueur est le Joueur ", winner)
     else :
         print("Match Nul!")
 
-def jouer():
-    rotation_joueur()
+def play():
+    player_choice()
     the_grid()
-    global joueur_actif
-    while jeu_fini == False :
-        tour(joueur_actif)
-        victoire()
-        if joueur_actif == "X":
-            joueur_actif = "O"
+    global active_player
+    while end_game == False :
+        tour(active_player)
+        victory()
+        if active_player == "X":
+            active_player = "O"
         else:
-            joueur_actif = "X"
+            active_player = "X"
     resultat()
-    rejouer()
-def rejouer():
-    choix = input("voulez vous rejouer ?")
+    #replay()
+
+
+
+
+
+
+"""def replay():
+    choix = input("voulez vous replay ?")
     choix = choix.upper()
     while True:
         if choix == "OUI":
-            jouer()
+            play()
             return False
         elif choix == "NON":
             print("Merci d'avoir joué !")
             return False
         else:
-            choix = input("voulez vous rejouer ?")
+            choix = input("voulez vous replay ?")
             return True
-jouer()
+"""
+play()
 
