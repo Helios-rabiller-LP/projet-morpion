@@ -20,6 +20,7 @@ def rotation_joueur():
             break
         else:
             joueur_actif= input("Quel joueur voulez vous être X ou O ? : ")
+ 
 
 # On construit la structure du morpion et on implémente une variable grille qui a pour valeur une liste          
 def the_grid():
@@ -67,7 +68,9 @@ def victoire():
     else:
         jeu_fini= False
 
+# Ici on défini
 def tour(joueur):
+    global joueur_actif
     print("tour du Joueur "+ joueur)
     coup = input("Sélectionner un nombre de 1 a 9 dans la grille pour placer votre pion :")
     check = False
@@ -85,11 +88,16 @@ def tour(joueur):
     the_grid()
     
 
-
+def resultat():
+    if gagnant == "X" or gagnant == "O":
+        print("Le vainqueur est le Joueur ", gagnant)
+    else :
+        print("Match Nul!")
 
 def jouer():
     rotation_joueur()
     the_grid()
+    global joueur_actif
     while jeu_fini == False :
         tour(joueur_actif)
         victoire()
@@ -97,8 +105,20 @@ def jouer():
             joueur_actif = "O"
         else:
             joueur_actif = "X"
-    if gagnant == "X" or gagnant == "O":
-        print("Le vainqueur est le Joueur ", gagnant)
-    else :
-        print("Match Nul!")
+    resultat()
+    rejouer()
+def rejouer():
+    choix = input("voulez vous rejouer ?")
+    choix = choix.upper()
+    while True:
+        if choix == "OUI":
+            jouer()
+            return False
+        elif choix == "NON":
+            print("Merci d'avoir joué !")
+            return False
+        else:
+            choix = input("voulez vous rejouer ?")
+            return True
 jouer()
+
