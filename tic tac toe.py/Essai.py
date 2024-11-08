@@ -3,9 +3,9 @@ def start():
     gamer_one()
     structure()
 
-grille =["-","-","-"
-        ,"-","-","-"
-        ,"-","-","-"]
+grille =["1","2","3"
+        ,"4","5","6"
+        ,"7","8","9"]
 
 # Le joueur choisit son symbole
 joueur_actuel = ""
@@ -37,11 +37,11 @@ def gamer_one():
 def structure():
     print("\n")
     print("---------------")
-    print( " |" ,grille[0], "|" ,grille[1], "|" ,grille[2], "| " + "    1 | 2 | 3" )
+    print( " |" ,grille[0], "|" ,grille[1], "|" ,grille[2], "| ")
     print("---------------")
-    print( " |" ,grille[3], "|" ,grille[4], "|" ,grille[5], "| " + "    4 | 5 | 6" )
+    print( " |" ,grille[3], "|" ,grille[4], "|" ,grille[5], "| ")
     print("---------------")
-    print( " |" ,grille[6], "|" ,grille[7], "|" ,grille[8], "| " + "    7 | 8 | 9" )
+    print( " |" ,grille[6], "|" ,grille[7], "|" ,grille[8], "| ")
     print("---------------")
     print("\n")
 
